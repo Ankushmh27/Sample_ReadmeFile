@@ -53,7 +53,7 @@ Feature: Login Feature
 Automation test scripts are implemented with page object model (POM) design pattern with pagefactory.
 In order to better organize the test code and make it more maintainable, it is recommended to use the Page Object Design Pattern. In the pom you can create a separate page class and test class. This approach reduces code duplication and allows easy updates if the UI changes and reuses the existing code. The Page Object pattern provides a solution by centralizing selectors (css’s, IDs, classes, Xpaths etc) in separate Page.java files, where we can manage them along with the associated methods.
 
-Framework Structure
+## Framework Structure
 The automation framework structure is as follows:
 
 Under /{Project_name}/src/main/java, there are some important java classes page object classes and Util classes(such as utils class with common reusable code)
@@ -72,62 +72,62 @@ Extend Reports are generated at /{Project_name}/Extent_reports/All_Reports/(html
 There is a POM.xml file in which all dependencies and plugins are present.
 There is also a testng.xml file located at /{Project_name}/testng.xml for cross browser testing such as Chrome, Firefox, Microsoft Edge, etc.
 
-Feature file description:
+<ins>**Feature file description:**<ins>
 
 The feature file is the essential segment of the cucumber tool, which is used to write acceptance steps for automation testing. Acceptance steps generally follow the application specification. A feature file is usually a common file which stores feature, scenarios, and feature description to be tested.
 
-Step Definition description:
+<ins>**Step Definition description:**<ins>
 
 Steps definition file stores the mapping between each step of the scenario defined in the feature file with a code of function to be executed. So, now when Cucumber executes a step of the scenario mentioned in the feature file, it scans the step definition file and figures out which function is to be called.
 
-<ins>**Step Definition Class:**<ins>
+Step Definition Class:
 
-public class LoginStep extends testNgRunner {
-	static LoginPage login ;
+	public class LoginStep extends testNgRunner {
+		static LoginPage login ;
 
-	@Given("user launch application")
-	public void launchApplication() throws IOException, InterruptedException 
-	{
-		System.out.println("Launch App");
-	}
-	
-	@Test(priority = 1)
-	@When("user enter username")
-	public void enterUsername() throws IOException, InterruptedException 
-	{
-		login = new LoginPage(driver);
-		login.inputUsername(utils.configReader("username"));
-		Thread.sleep(2000);
-	}
+		@Given("user launch application")
+		public void launchApplication() throws IOException, InterruptedException 
+		{
+			System.out.println("Launch App");
+		}
+		
+		@Test(priority = 1)
+		@When("user enter username")
+		public void enterUsername() throws IOException, InterruptedException 
+		{
+			login = new LoginPage(driver);
+			login.inputUsername(utils.configReader("username"));
+			Thread.sleep(2000);
+		}
 
-	@Test(priority = 2)
-	@When("user enter password")
-	public void enterPassword() throws IOException, InterruptedException
-	{
-		login.inputPassword(utils.configReader("password"));
-		Thread.sleep(2000);
+		@Test(priority = 2)
+		@When("user enter password")
+		public void enterPassword() throws IOException, InterruptedException
+		{
+			login.inputPassword(utils.configReader("password"));
+			Thread.sleep(2000);
+		}
+		@Test(priority = 3)
+		@When("user click on Login button")
+		public void clickLoginBtn() throws IOException, InterruptedException 
+		{
+			login.clickLoginButton();
+			Thread.sleep(2000);
+		}
+		
+		@Test(priority = 4)
+		@Then("user verify the page title") 
+		public void verifyPageTitle() throws IOException, InterruptedException 
+		{
+			String actualTitle = driver.getTitle();
+			System.out.println("Actual Page Title :"+ actualTitle);
+			String expectedTitle= "OrangeHRMHome";
+			SoftAssert soft=new SoftAssert();
+			soft.assertEquals(actualTitle, expectedTitle);
+			soft.assertAll();
+			Thread.sleep(2000);
+		}
 	}
-	@Test(priority = 3)
-	@When("user click on Login button")
-	public void clickLoginBtn() throws IOException, InterruptedException 
-	{
-		login.clickLoginButton();
-		Thread.sleep(2000);
-	}
-	
-	@Test(priority = 4)
-	@Then("user verify the page title") 
-	public void verifyPageTitle() throws IOException, InterruptedException 
-	{
-		String actualTitle = driver.getTitle();
-		System.out.println("Actual Page Title :"+ actualTitle);
-		String expectedTitle= "OrangeHRMHome";
-		SoftAssert soft=new SoftAssert();
-		soft.assertEquals(actualTitle, expectedTitle);
-		soft.assertAll();
-		Thread.sleep(2000);
-	}
-}
 
 
 
@@ -201,6 +201,7 @@ Run the testng.xml file using TestNG. Single and cross browser testing can be pe
 Run through the command line. Open the cmd terminal where the pom.xml file is located. Write and run the TestRunner class using TestNG.
 
 <ins>**Test Data:**<ins>
+
 [Describe how to manage test data, if applicable]
 [Include any sample test data files or templates or just write here]
 
@@ -248,5 +249,5 @@ All POM files require the project element and three mandatory fields: groupId, a
 <ins>**Contact:**<ins>
 
 QA Manager: Nishit Sheth
-QA Engineer: Ankush Mhala
 
+QA Engineer: Ankush Mhala
