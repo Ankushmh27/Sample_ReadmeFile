@@ -39,7 +39,7 @@ The features are written in the .feature files in plain english text.
 you can find more information at https://cucumber.io/docs/cucumber/
 
 A typical test will have a structure similar to this:
-<ins>**Feature File: **<ins>
+<ins>**Feature File:**<ins>
 Feature: Login Feature
 
   Scenario: User Login with Valid Credentials
@@ -63,7 +63,7 @@ Under /{Project_name}/src/test/java, there are feature files, test runner class,
 All the property files like configuration files are present under /{Project_name}/src/test/resources path(configuration.properties, Extent.properties, Extent-config.xml).
 
 
-<ins>** Reporting:**<ins>
+<ins>**Reporting:**<ins>
 
 TestNg Reports are generated at /{Project_name}/test-output/ html, emailable report)
 Cucumber Reports are generated at /{Project_name}/target/ html, json report)
@@ -204,7 +204,7 @@ Run through the command line. Open the cmd terminal where the pom.xml file is lo
 [Describe how to manage test data, if applicable]
 [Include any sample test data files or templates or just write here]
 
-<ins>**POM File: **<ins> 
+<ins>**POM File:**<ins> 
 
 -> POM is basically a Project Object Model. It is a fundamental unit of work in Maven. It is an XML file that resides in the base directory of the project as pom.xml. The POM contains information about the project and various configuration details used by Maven to build the project(s).
 
